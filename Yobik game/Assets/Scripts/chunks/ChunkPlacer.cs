@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Transform Player;
+    private Chunk[] ChunkPrefubs;
+    public Chunk FirstChunk;
+
+    private Chunk[,] spawnedChunks;
+    //public List<Chunk> spawnedChunks = new List<Chunk>();
     void Start()
     {
-        
+        //spawnedChunks.Add(FirstChunk);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //if (Player.position.x > spawnedChunks) ;
     }
 }

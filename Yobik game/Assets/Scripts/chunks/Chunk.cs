@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Chunk : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Transform UP;
+    public Transform DOWN;
+    public Transform LEFT;
+    public Transform RIGHT;
     void Start()
     {
         
