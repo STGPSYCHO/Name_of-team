@@ -10,6 +10,5 @@ public class CameraFollower : MonoBehaviour
     private void Update()
     {
         transform.position = Target.position - new Vector3(0,0,1);
-        Debug.Log(transform.position);
     }
 }
