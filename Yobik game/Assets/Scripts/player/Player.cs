@@ -7,17 +7,19 @@ public class Player : MonoBehaviour
     private float dirX, dirY;
     private bool isf = false;
     public float speed;
+    public float maxHealth = 100f;
     public float HP;
 
     private Rigidbody2D rb;
-    //public Animator anin;
+    public Animator anin;
     public Joystick joystick;
 
     void Start()
     {
+        HP = maxHealth;
         rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
-        //anin = GetComponent<Animator>();
+        anin = GetComponent<Animator>();
     }
 
     void Update()
@@ -26,11 +28,10 @@ public class Player : MonoBehaviour
         dirX = joystick.Horizontal * speed;
         dirY = joystick.Vertical * speed;
 
-      //if (dirX < 0)
-      //      anin.SetBool("isRun", true);
-
-      //  else if (dirX > 0)
-      //      anin.SetBool("isRun", true);
+        if (dirX != 0 && dirY != 0)
+            anin.SetBool("IsRunning", true);
+        else
+            anin.SetBool("IsRunning", false);
 
         //Поворот
         if (dirX > 0 && isf)

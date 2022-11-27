@@ -8,7 +8,8 @@ using Transform = UnityEngine.Transform;
 
 public class EnemyFollow : MonoBehaviour
 {
-    private Rigidbody2D rb;
+    private Rigidbody2D rbPlayer;
+    private Rigidbody2D rbEnemy;
     public float speed;
     private Transform player;
     private bool isf = true;
@@ -17,8 +18,10 @@ public class EnemyFollow : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        rb = player.GetComponent<Rigidbody2D>();
-        rb.freezeRotation = true;
+        rbPlayer = player.GetComponent<Rigidbody2D>();
+        rbPlayer.freezeRotation = true;
+        rbEnemy = transform.GetComponent<Rigidbody2D>();
+        rbEnemy.freezeRotation = true;
         //anim = GetComponent<Animator>();
     }
 

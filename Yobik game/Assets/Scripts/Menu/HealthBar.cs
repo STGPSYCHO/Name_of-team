@@ -6,17 +6,19 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     public Player player;
+    public Slider slider;
 
     Image healthBar;
-    public float maxHealth = 100f;
+    
     void Start()
     {
-        healthBar = GetComponent<Image>();
-        player.HP = maxHealth;
+        slider = transform.GetComponent<Slider>();
+        slider.maxValue = player.maxHealth;
+        slider.value = slider.maxValue;
     }
 
     void Update()
     {
-        healthBar.fillAmount = player.HP / maxHealth;
+        slider.value = player.HP;
     }
 }
