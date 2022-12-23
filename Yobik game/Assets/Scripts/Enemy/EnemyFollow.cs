@@ -1,9 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 using Transform = UnityEngine.Transform;
 
 public class EnemyFollow : MonoBehaviour
@@ -13,7 +10,7 @@ public class EnemyFollow : MonoBehaviour
     public float speed;
     private Transform player;
     private bool isf = true;
-    //private Animator anim;
+    private GenerateEnemies GE;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +19,7 @@ public class EnemyFollow : MonoBehaviour
         rbPlayer.freezeRotation = true;
         rbEnemy = transform.GetComponent<Rigidbody2D>();
         rbEnemy.freezeRotation = true;
+        GE = transform.GetComponent<GenerateEnemies>();
         //anim = GetComponent<Animator>();
     }
 
@@ -29,13 +27,6 @@ public class EnemyFollow : MonoBehaviour
     void FixedUpdate()
     {
         transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
-
-        //anim.SetBool("isRun", true);
-
-        //if (direction.x > 0 && isf)
-        //    Flip();
-        //else if (direction.x < 0 && !isf)
-        //    Flip();
     }
     private void Flip()
     {
@@ -45,7 +36,9 @@ public class EnemyFollow : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        GE.ActivateModule();
         if (collision.gameObject.tag == "Player")
             Destroy(gameObject);
+        
     }
 }
