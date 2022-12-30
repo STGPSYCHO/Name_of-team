@@ -1,4 +1,5 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -7,7 +8,7 @@ using static RoomPoint;
 public class RoomTrigger : MonoBehaviour
 {
     public GameObject player;
-    public GameObject room;
+    public List<GameObject> room;
 
     public List<Map> Maps;
     public List<GameObject> MapsObj;
@@ -30,6 +31,7 @@ public class RoomTrigger : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");   
         GameObject parent = transform.root.gameObject;
         RoomPoints = parent.GetComponentsInChildren<RoomPoint>();
+        
     }
 
     // Update is called once per frame
@@ -38,6 +40,9 @@ public class RoomTrigger : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        int a = 0;
+        if (UnityEngine.Random.value >= 0.5f) { a = 1; }
+        Debug.Log(a);
         GetAllCenterPoints();
         if (Direction_Trigger == DirectionTrigger.Left)
         {
@@ -64,7 +69,7 @@ public class RoomTrigger : MonoBehaviour
                     }
                     else
                     {
-                        Instantiate(room, roomPoint.transform.position, roomPoint.transform.rotation);
+                        Instantiate(room[a], roomPoint.transform.position, roomPoint.transform.rotation);
                     }
                     
             
@@ -96,7 +101,7 @@ public class RoomTrigger : MonoBehaviour
                     }
                     else
                     {
-                        Instantiate(room, roomPoint.transform.position, roomPoint.transform.rotation);
+                        Instantiate(room[a], roomPoint.transform.position, roomPoint.transform.rotation);
                     }
                 }
             }
@@ -126,7 +131,7 @@ public class RoomTrigger : MonoBehaviour
                     }
                     else
                     {
-                        Instantiate(room, roomPoint.transform.position, roomPoint.transform.rotation);
+                        Instantiate(room[a], roomPoint.transform.position, roomPoint.transform.rotation);
                     }
 
 
@@ -158,7 +163,7 @@ public class RoomTrigger : MonoBehaviour
                     }
                     else
                     {
-                        Instantiate(room, roomPoint.transform.position, roomPoint.transform.rotation);
+                        Instantiate(room[a], roomPoint.transform.position, roomPoint.transform.rotation);
                     }
 
 
